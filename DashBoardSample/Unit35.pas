@@ -14,9 +14,7 @@ type
   TForm35 = class(TForm)
     GridPanel1: TGridPanel;
     Panel1: TPanel;
-    Label1: TLabel;
     Label2: TLabel;
-    SpeedButton1: TSpeedButton;
     Label3: TLabel;
     Label4: TLabel;
     Memo1: TMemo;
@@ -27,8 +25,8 @@ type
     Panel3: TPanel;
     Image3: TImage;
     Panel4: TPanel;
-    Image4: TImage;
     Panel5: TPanel;
+    Image4: TImage;
     Image5: TImage;
     procedure GridPanel1DragOver(Sender, Source: TObject; X, Y: Integer;
       State: TDragState; var Accept: Boolean);
@@ -157,25 +155,13 @@ procedure TForm35.grdpnl1DragOver(Sender, Source: TObject; X, Y: Integer;
   begin
     Result := False;
     if Rect.Top < 0 then
-    begin
-      Memo1.Lines.Add(Format('Top : %d', [Rect.Top]));
-      Result := True;
-    end
-    else if Rect.Left < 0 then
-    begin
-      Memo1.Lines.Add(Format('Left : %d', [Rect.Left]));
-      Result := True;
-    end
-    else if Rect.Top + Rect.Height > grdpnl1.RowCollection.Count then
-    begin
-      Memo1.Lines.Add(Format('Bottom : %d > %d', [Rect.Top + Rect.Height, grdpnl1.RowCollection.Count]));
       Result := True
-    end
+    else if Rect.Left < 0 then
+      Result := True
+    else if Rect.Top + Rect.Height > grdpnl1.RowCollection.Count then
+      Result := True
     else if Rect.Left + Rect.Width > grdpnl1.ColumnCollection.Count then
-    begin
-      Memo1.Lines.Add(Format('Right : %d > %d', [Rect.Left + Rect.Width, grdpnl1.ColumnCollection.Count]));
       Result := True;
-    end;
   end;
 var
   MovedControl: TControlItem;
@@ -187,6 +173,16 @@ begin
 
   if not Accept then
     Exit;
+
+  if (Sender is TPanel) and (Sender <> Source) then
+  begin
+    Accept := False;
+    Exit;
+  end else if (Sender is TImage) and (TControl(Sender).Parent <> Source) then
+  begin
+    Accept := False;
+    Exit;
+  end;
 
   bFound := False;
   Label4.Caption := Format('Mouse Coord %d %d', [X, Y]);
@@ -201,7 +197,7 @@ begin
         // Coordonnées de la souris dans la grille (Ligne/Colonne
         MouseRect := GetCellRectAtMousePoint(bFound);
 
-
+        // Rect de destination
         DestRect := TRect.Create(
           TPoint.Create(MouseRect.Left, MouseRect.Top),
           TPoint.Create(MouseRect.Left + MovedControl.ColumnSpan, MouseRect.Top + MovedControl.RowSpan)
@@ -215,25 +211,19 @@ begin
         else if DestRectIsOutOfBounds(DestRect, MovedControl) then
           Accept := False;
 
-        if Accept then
+        if bFound and (SavPoint <> MouseRect.TopLeft) then
         begin
+          SavPoint := MouseRect.TopLeft;
 
-          if bFound and (SavPoint <> MouseRect.TopLeft) then
+          if Accept then
           begin
-            SavPoint := MouseRect.TopLeft;
-
             THackControlItem(MovedControl).InternalSetLocation(
               MouseRect.TopLeft.X,
               MouseRect.TopLeft.Y,
               False,
               False // True
             );
-
-            Memo1.Lines.Add(Format('Move to %d %d', [MouseRect.TopLeft.X, MouseRect.TopLeft.Y]))
-          end
-          else if not bFound then
-            Memo1.Lines.Add(Format('Not Found', []));
-
+          end;
         end;
       end;
     finally

@@ -13,45 +13,39 @@ object Form35: TForm35
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
-  object Label1: TLabel
+  object Label2: TLabel
     Left = 0
     Top = 0
     Width = 945
     Height = 13
     Align = alTop
     Caption = 'Label1'
+    ExplicitTop = 13
     ExplicitWidth = 31
   end
-  object Label2: TLabel
+  object Label3: TLabel
     Left = 0
     Top = 13
     Width = 945
     Height = 13
     Align = alTop
     Caption = 'Label1'
+    ExplicitTop = 26
     ExplicitWidth = 31
   end
-  object Label3: TLabel
+  object Label4: TLabel
     Left = 0
     Top = 26
     Width = 945
     Height = 13
     Align = alTop
     Caption = 'Label1'
-    ExplicitWidth = 31
-  end
-  object Label4: TLabel
-    Left = 0
-    Top = 39
-    Width = 945
-    Height = 13
-    Align = alTop
-    Caption = 'Label1'
+    ExplicitTop = 39
     ExplicitWidth = 31
   end
   object GridPanel1: TGridPanel
-    Left = 15
-    Top = 73
+    Left = 19
+    Top = 152
     Width = 306
     Height = 302
     Caption = 'GridPanel1'
@@ -84,11 +78,6 @@ object Form35: TForm35
       item
         Column = 0
         Control = Panel1
-        Row = 0
-      end
-      item
-        Column = 2
-        Control = SpeedButton1
         Row = 0
       end
       item
@@ -125,9 +114,6 @@ object Form35: TForm35
       end>
     TabOrder = 0
     OnDragOver = GridPanel1DragOver
-    DesignSize = (
-      306
-      302)
     object Panel1: TPanel
       AlignWithMargins = True
       Left = 4
@@ -372,15 +358,6 @@ object Form35: TForm35
         OnMouseDown = Image1MouseDown
         OnMouseMove = Image1MouseMove
       end
-    end
-    object SpeedButton1: TSpeedButton
-      Left = 114
-      Top = 15
-      Width = 23
-      Height = 22
-      Anchors = []
-      ExplicitLeft = 461
-      ExplicitTop = 253
     end
     object Panel2: TPanel
       AlignWithMargins = True
@@ -638,10 +615,10 @@ object Form35: TForm35
     TabOrder = 1
   end
   object grdpnl1: TGridPanel
-    Left = 334
-    Top = 73
-    Width = 300
-    Height = 314
+    Left = 337
+    Top = 159
+    Width = 301
+    Height = 301
     Caption = 'grdpnl1'
     ColumnCollection = <
       item
@@ -716,10 +693,14 @@ object Form35: TForm35
     OnDragOver = grdpnl1DragOver
     object Panel3: TPanel
       AlignWithMargins = True
-      Left = 4
-      Top = 4
-      Width = 44
-      Height = 44
+      Left = 2
+      Top = 2
+      Width = 48
+      Height = 48
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Align = alClient
       Caption = 'Panel1'
       Color = clRed
@@ -727,9 +708,13 @@ object Form35: TForm35
       TabOrder = 0
       OnDragDrop = grdpnl1DragDrop
       OnDragOver = grdpnl1DragOver
+      ExplicitLeft = 4
+      ExplicitTop = 4
+      ExplicitWidth = 44
+      ExplicitHeight = 44
       object Image3: TImage
-        Left = 4
-        Top = 2
+        Left = -9
+        Top = -9
         Width = 24
         Height = 22
         Picture.Data = {
@@ -961,10 +946,14 @@ object Form35: TForm35
     end
     object Panel4: TPanel
       AlignWithMargins = True
-      Left = 54
-      Top = 4
-      Width = 94
-      Height = 94
+      Left = 52
+      Top = 2
+      Width = 98
+      Height = 98
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Align = alClient
       Caption = 'Panel1'
       Color = clRed
@@ -972,9 +961,13 @@ object Form35: TForm35
       TabOrder = 1
       OnDragDrop = grdpnl1DragDrop
       OnDragOver = grdpnl1DragOver
+      ExplicitLeft = 54
+      ExplicitTop = 4
+      ExplicitWidth = 94
+      ExplicitHeight = 94
       object Image4: TImage
-        Left = 4
-        Top = 2
+        Left = -9
+        Top = -7
         Width = 24
         Height = 22
         Picture.Data = {
@@ -1206,17 +1199,27 @@ object Form35: TForm35
     end
     object Panel5: TPanel
       AlignWithMargins = True
-      Left = 154
-      Top = 4
-      Width = 44
-      Height = 44
+      Left = 152
+      Top = 2
+      Width = 48
+      Height = 48
+      Margins.Left = 1
+      Margins.Top = 1
+      Margins.Right = 1
+      Margins.Bottom = 1
       Align = alClient
       Caption = 'Panel1'
       Color = clRed
       ParentBackground = False
       TabOrder = 2
+      OnDragDrop = grdpnl1DragDrop
+      OnDragOver = grdpnl1DragOver
+      ExplicitLeft = 154
+      ExplicitTop = 4
+      ExplicitWidth = 44
+      ExplicitHeight = 44
       object Image5: TImage
-        Left = 4
+        Left = 0
         Top = 2
         Width = 24
         Height = 22
@@ -1443,6 +1446,8 @@ object Form35: TForm35
           77FA9D3A26040FDD262864503AC2BBE402E225BDBED2F47F8301DCEF2F6A7CAB
           0000000049454E44AE426082}
         Stretch = True
+        OnDragOver = grdpnl1DragOver
+        OnMouseDown = Image4MouseDown
       end
     end
   end
