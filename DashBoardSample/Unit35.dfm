@@ -725,6 +725,8 @@ object Form35: TForm35
       Color = clRed
       ParentBackground = False
       TabOrder = 0
+      OnDragDrop = grdpnl1DragDrop
+      OnDragOver = grdpnl1DragOver
       object Image3: TImage
         Left = 4
         Top = 2
@@ -953,6 +955,8 @@ object Form35: TForm35
           77FA9D3A26040FDD262864503AC2BBE402E225BDBED2F47F8301DCEF2F6A7CAB
           0000000049454E44AE426082}
         Stretch = True
+        OnDragOver = grdpnl1DragOver
+        OnMouseDown = Image4MouseDown
       end
     end
     object Panel4: TPanel
@@ -1197,7 +1201,6 @@ object Form35: TForm35
           0000000049454E44AE426082}
         Stretch = True
         OnDragOver = grdpnl1DragOver
-        OnEndDrag = Image4EndDrag
         OnMouseDown = Image4MouseDown
       end
     end
