@@ -615,8 +615,8 @@ object Form35: TForm35
     TabOrder = 1
   end
   object grdpnl1: TGridPanel
-    Left = 337
-    Top = 159
+    Left = 332
+    Top = 150
     Width = 301
     Height = 301
     Caption = 'grdpnl1'
